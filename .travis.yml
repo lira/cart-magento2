@@ -20,8 +20,7 @@ language: php
 sudo: required
 dist: trusty
 php:
-   - 5.6
-   #- 7.0
+   - 7.3
 cache:
  directories:
    - $HOME/.composer/cache
@@ -56,6 +55,11 @@ before_script:
     - mysql -uroot -e 'SET @@global.sql_mode = NO_ENGINE_SUBSTITUTION; CREATE DATABASE
       magento_2_travis;';
     - sudo apt-get install -y -qq apache2 libapache2-mod-fastcgi
+  # add elasticsearch 7.6
+    - curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.6.2-amd64.deb -o elasticsearch.deb
+    - sudo dpkg -i --force-confnew elasticsearch.deb
+    - sudo chown -R elasticsearch:elasticsearch /etc/default/elasticsearch
+    - sudo service elasticsearch restart
     - sudo cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.d/www.conf.default
       ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.d/www.conf 2>/dev/null ||
       true
