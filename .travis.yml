@@ -20,7 +20,7 @@ language: php
 sudo: required
 dist: trusty
 php:
-   - 7.3
+   - 7.0
 cache:
  directories:
    - $HOME/.composer/cache
