@@ -12,7 +12,7 @@ env:
     - COMPOSER_REPOSITORY_TO_TEST=https://github.com
     - COMPOSER_PACKAGE_TO_TEST="mercadopago/magento2-plugin:dev"
 addons:
-  firefox: "40.0"
+  firefox: "81.0"
   hosts:
     # should match MAGE2_FAKE_URL above
     - magento-2-travis.dev    
@@ -37,9 +37,7 @@ before_script:
     #- sudo ls /etc/apache2/sites-available
     #- sudo ls /etc/apache2/sites-enabled
     #- pwd    
-    #    
-    # get latest composer 
-    - composer selfupdate
+    #
     # disable xdebug for perf    
     - echo '' > ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini   
     # add multiverse support to get MySQL 5.6 update apt
